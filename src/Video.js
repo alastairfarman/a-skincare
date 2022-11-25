@@ -1,13 +1,13 @@
-export default function Video() {
-    return (
-        <><h1>FUCK</h1>
-<div className="video-wrapper">
-<video playsInline autoPlay muted id="myVideo">
-  <source src="A-FULL.mp4" type="video/mp4"/>
-</video>
-</div>
-<div className="logo"><img src="A-LOGO.png" alt=""></img></div>
+export default function Video(props) {
 
-        </>
-    )
+
+  return (
+    <>
+      <div id="video-wrapper">
+        <video playsInline muted id="myVideo" preload="preload">
+        </video>
+      </div>
+    
+    </>
+  );
 }
