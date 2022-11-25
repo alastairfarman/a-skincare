@@ -45,7 +45,7 @@ function App() {
   function stillImage() {
     console.log("set BG image");
     const bgImage = document.getElementById("img");
-    bgImage.style.backgroundImage = `url(../A-i-0${currentPage}.png)`;
+    bgImage.style.backgroundImage = `url(./A-i-0${currentPage}.png)`;
   }
 
   function nextClick() {
@@ -93,7 +93,7 @@ function App() {
 
     bgImage.style.opacity = "0";
 
-    video.src = `A-mr-0${currentPage - 1}.mp4`;
+    video.src = `./A-mr-0${currentPage - 1}.mp4`;
     video.play();
 
     video.addEventListener("ended", resetListenerB);
