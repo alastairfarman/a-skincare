@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./App.css";
 import Video from "./Video";
-const _ = require("lodash");
+import Nav from "./Nav";
+import Content from "./Content";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,6 +14,10 @@ function App() {
   // useEffect(() => {
   //   window.addEventListener("scroll", transition);
   // });
+
+  // window.onbeforeunload = function () {
+  //   window.scrollTo(0, 0);
+  // };
 
   // function transition(e) {
   //   //this seems like the break point. wont remove event listener for scroll - or is it adding after//
@@ -38,34 +43,23 @@ function App() {
 
   useEffect(stillImage);
 
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  };
-
   function stillImage() {
     console.log("set BG image");
     const bgImage = document.getElementById("img");
     bgImage.style.backgroundImage = `url(./A-i-0${currentPage}.png)`;
   }
 
-  function nextClick() {
-    const nav = document.getElementById("product-nav");
-    nav.style.opacity = 0;
-    nav.classList.add("hide");
-    transitionFwd();
-  }
   function transitionFwd() {
     console.log("transitionFwd ran");
     const bgImage = document.getElementById("img");
     const videoWrapper = document.getElementById("video-wrapper");
     const video = videoWrapper.firstChild;
 
-    bgImage.style.opacity = "0";
-
     video.src = `A-m-0${currentPage}.mp4`;
 
     video.addEventListener("ended", resetListenerF);
     video.play();
+    bgImage.style.opacity = "0";
 
     function resetListenerF() {
       const nav = document.getElementById("product-nav");
@@ -78,12 +72,6 @@ function App() {
     }
   }
 
-  function prevClick() {
-    const nav = document.getElementById("product-nav");
-    nav.style.opacity = 0;
-    nav.classList.add("hide");
-    transitionBk();
-  }
   function transitionBk() {
     console.log("transitionBK ran");
 
@@ -91,10 +79,10 @@ function App() {
     const videoWrapper = document.getElementById("video-wrapper");
     const video = videoWrapper.firstChild;
 
-    bgImage.style.opacity = "0";
-
     video.src = `./A-mr-0${currentPage - 1}.mp4`;
     video.play();
+
+    bgImage.style.opacity = "0";
 
     video.addEventListener("ended", resetListenerB);
 
@@ -114,13 +102,12 @@ function App() {
       <div id="img"></div>
       <Video currentPage={currentPage} />
       <div className="overlay"></div>
-      <div className="logo">
-        <img src="A-LOGO.png" alt=""></img>
-        <div id="product-nav">
-          <div onClick={prevClick}>&lt;</div>
-          <div onClick={nextClick}>&gt;</div>
-        </div>
-      </div>
+      <Content currentPage={currentPage} />
+      <Nav
+        transitionFwd={transitionFwd}
+        transitionBk={transitionBk}
+        currentPage={currentPage}
+      />
     </>
   );
 }
