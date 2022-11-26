@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "./static/css/main.c5642ea1.css",
-    "main.js": "./static/js/main.16d4a734.js",
+    "main.css": "./static/css/main.7ed99de3.css",
+    "main.js": "./static/js/main.45f8457b.js",
+    "static/media/Compote-Free.otf": "./static/media/Compote-Free.0b7cca6e801f1bedebaf.otf",
     "index.html": "./index.html",
-    "main.c5642ea1.css.map": "./static/css/main.c5642ea1.css.map",
-    "main.16d4a734.js.map": "./static/js/main.16d4a734.js.map"
+    "main.7ed99de3.css.map": "./static/css/main.7ed99de3.css.map",
+    "main.45f8457b.js.map": "./static/js/main.45f8457b.js.map"
   },
   "entrypoints": [
-    "static/css/main.c5642ea1.css",
-    "static/js/main.16d4a734.js"
+    "static/css/main.7ed99de3.css",
+    "static/js/main.45f8457b.js"
   ]
 }
