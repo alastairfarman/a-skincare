@@ -3,6 +3,7 @@ export default function Overview() {
     <>
       <div className="content">
         <div className="title">NOURISHED HANDS</div>
+        <div className="sidebar">This is a sidebar</div>
       </div>
     </>
   );

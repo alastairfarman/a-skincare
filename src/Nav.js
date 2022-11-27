@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import Dropdown from "./Dropdown";
 
 export default function Nav(props) {
-
   function nextClick() {
     const nav = document.getElementById("product-nav");
 
@@ -11,7 +10,6 @@ export default function Nav(props) {
       nav.classList.add("hide");
       props.transitionFwd();
     }
-
     if (props.currentPage == 3) {
       nav.lastChild.classList.add("greyed-out");
     }
@@ -28,7 +26,6 @@ export default function Nav(props) {
       nav.classList.add("hide");
       props.transitionBk();
     }
-
     if (props.currentPage == 2) {
       nav.firstChild.classList.add("greyed-out");
     }
@@ -50,6 +47,8 @@ export default function Nav(props) {
           </div>
         </div>
       </div>
+      <Dropdown/>
+
     </>
   );
 }

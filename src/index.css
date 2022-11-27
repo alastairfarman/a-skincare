@@ -7,6 +7,11 @@
   src: url(/public/Compote-Free.otf);
 }
 
+@font-face {
+  font-family: Hubot;
+  src: url(/public/Hubot-Sans-SemiBold.ttf);
+}
+
 body {
   height: 100vh;
 }
@@ -75,10 +80,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   height: 100%;
   width: 50px;
   border: solid 1px black;
+  transition: background-color 0.5s;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -89,7 +95,7 @@ h1 {
 }
 
 .greyed-out {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0);
   cursor: default;
   transition: background-color 0.5s;
 }
@@ -117,6 +123,44 @@ h1 {
   grid-row-start: 2;
 }
 
+.sidebar {
+  height: 100vh;
+  width: 3vw;
+  position: fixed;
+  right: 0;
+  padding: 3rem;
+  box-sizing: border-box;
+  border: solid 1px black;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown {
+  height: 500px;
+  width: 182px;
+  font-family: Hubot;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 1px black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-left: 1rem;
+  margin-bottom: calc(2rem + 50px);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown ul {
+  list-style-type: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 3rem;
+  text-transform: uppercase;
+}
+
 @keyframes slideinleft {
   0% {
     transform: translateX(-50vw);
@@ -131,6 +175,5 @@ h1 {
     transform-origin: bottom left;
     scale: 0.75;
     transition: all 0.5s;
-      }
- 
+  }
 }
