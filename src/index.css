@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: Hubot;
-  src: url(/public/Hubot-Sans-SemiBold.ttf);
+  src: url(/public/Hubot-Sans-LightSemi.ttf);
 }
 
 body {
@@ -25,13 +25,15 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 3;
-  transition: opacity 0.4s;
+
+  transition: width 1s, opacity 0.4s;
 }
 
 #video-wrapper video {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  transition: width 1s;
   z-index: 2;
   top: 0%;
   object-fit: cover;
@@ -52,6 +54,7 @@ body {
 .logo {
   position: fixed;
   display: flex;
+  width: calc(100vw - 2rem);
   bottom: 0;
   left: 0;
   margin: 1rem;
@@ -114,30 +117,43 @@ h1 {
 }
 
 .title {
-  font-size: 8rem;
+  font-size: calc(6vw + 10vh / 8);
   font-family: Compote;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   transition: all 1s;
   animation: slideinleft 2s ease-in-out;
   grid-column-start: 2;
   grid-row-start: 2;
+  grid-column-end: 4;
+  mix-blend-mode: overlay;
 }
 
-.sidebar {
+#sidebar {
   height: 100vh;
-  width: 3vw;
+  width: 20vw;
   position: fixed;
   right: 0;
   padding: 3rem;
   box-sizing: border-box;
-  border: solid 1px black;
-  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+}
+
+#page-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 800px;
+}
+
+.page-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown {
   height: 500px;
   width: 182px;
-  font-family: Hubot;
+  font-family: Compote;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.5);
   border: solid 1px black;
@@ -150,6 +166,20 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s, opacity 0.6s;
+}
+
+.collapsed {
+  height: 1px;
+  border-top: solid 0px rgba(0, 0, 0, 0);
+  transition: height 0.5s ease-in-out 0.6s, border-top 1s linear 0.6s;
+}
+
+.collapsed ul {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 1s;
+  pointer-events: none;
+  line-height: 1rem;
 }
 
 .dropdown ul {
@@ -157,8 +187,51 @@ h1 {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  line-height: 3rem;
-  text-transform: uppercase;
+  line-height: 6rem;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out 0.5s;
+}
+
+#followCursor {
+  display: none;
+  position: absolute;
+  z-index: 4;
+  background-color: aliceblue;
+  padding: 1rem;
+  font-family: Compote;
+}
+
+svg {
+  position: fixed;
+  z-index: 5;
+  height: 300px;
+  rotate: -25deg;
+  transform: translate(-100px, -150px);
+
+  width: auto;
+}
+
+svg > path {
+  pointer-events: all;
+}
+
+svg > path:hover {
+  fill: blue;
+}
+
+#areaPlant {
+  display: flex;
+  z-index: 5;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sidebar-resize {
+  width: 60vw !important;
 }
 
 @keyframes slideinleft {
@@ -175,5 +248,11 @@ h1 {
     transform-origin: bottom left;
     scale: 0.75;
     transition: all 0.5s;
+  }
+
+  .dropdown {
+    scale: 0.75;
+    transform-origin: bottom left;
+    margin-bottom: calc(1rem + 50px);
   }
 }

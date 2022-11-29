@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "./App.css";
 import Video from "./Video";
 import Nav from "./Nav";
 import Content from "./Content";
+import _ from "lodash";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
 
-  //scroll option commented out - buggy//
+  //scroll version commented out - buggy. will attempt continuous scroll version when finished//
 
   // const [currentScrollY, setCurrentScrollY] = useState(window.scrollY);
   // useEffect(() => {
@@ -41,6 +41,8 @@ function App() {
   //   }
   // }
 
+  /* Navigation */
+
   useEffect(stillImage);
 
   function stillImage() {
@@ -57,6 +59,7 @@ function App() {
 
     video.src = `A-m-0${currentPage}.mp4`;
 
+    
     video.addEventListener("ended", resetListenerF);
     video.play();
     bgImage.style.opacity = "0";
@@ -96,6 +99,8 @@ function App() {
       nav.classList.remove("hide");
     }
   }
+
+
 
   return (
     <>

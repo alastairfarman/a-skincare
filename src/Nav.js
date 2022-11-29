@@ -34,10 +34,25 @@ export default function Nav(props) {
     }
   }
 
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+
+    if (menu.classList.contains("collapsed")) {
+      menu.classList.remove("collapsed");
+    } else {
+      menu.classList.add("collapsed");
+    }
+  }
+
   return (
     <>
       <div className="logo">
-        <img src="A-LOGO.png" alt=""></img>
+        <img
+          src="A-LOGO.png"
+          onMouseOver={toggleMenu}
+          onMouseOut={toggleMenu}
+          alt=""
+        ></img>
         <div id="product-nav">
           <div className="nav-button greyed-out" onClick={prevClick}>
             &lt;
@@ -46,9 +61,14 @@ export default function Nav(props) {
             &gt;
           </div>
         </div>
+        <div id="page-display">
+          <div className="page-name">Dark</div>
+          <div className="page-name">Light</div>
+          <div className="page-name">Aloe</div>
+          <div className="page-name">Ingredients</div>
+        </div>
       </div>
-      <Dropdown/>
-
+      <Dropdown />
     </>
   );
 }
